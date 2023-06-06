@@ -3,14 +3,11 @@ const axios = require('axios');
 
 const URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 
-// send request to google books api
-// handle data and return to user;
 const getBooks = (req, res) => {
   const { query } = req;
 
   const searchQuery = query.author.replace(/ /g, '+');
 
-  console.log('SEARCH URL: ', `${URL}${searchQuery}&key=${process.env.GOOGLE_API_KEY}`);
   axios.get(`${URL}${searchQuery}&key=${process.env.GOOGLE_API_KEY}`)
     .then((response) => {
       let books = response.data.items;
@@ -26,7 +23,6 @@ const getBooks = (req, res) => {
           previewLink: book.volumeInfo.previewLink || '',
         }
       ));
-      console.log('***BOOKS: ', books);
       res.status(200).send(books);
     })
     .catch((err) => {
