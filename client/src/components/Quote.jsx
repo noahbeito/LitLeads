@@ -35,6 +35,7 @@ export default function Quote() {
     quotes.splice(index, 1);
     setQuotes([...quotes]);
     setIndex(Math.floor(Math.random() * quotes.length));
+    setShowBooks(false);
   };
 
   const booksClickHandler = () => {
