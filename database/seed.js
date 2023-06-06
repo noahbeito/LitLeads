@@ -14,3 +14,6 @@ axios.get('https://philosophy-quotes-api.glitch.me/quotes')
   .catch((err) => {
     console.log(err);
   });
+
+// Run this command in the mongosh CLI to update
+// db.quotes.updateMany( {}, { $rename: { "source": "author" } } );
