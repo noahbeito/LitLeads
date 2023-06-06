@@ -9,4 +9,6 @@ const quoteSchema = new mongoose.Schema({
 
 const Quote = mongoose.model('Quote', quoteSchema);
 
-module.exports = Quote;
+const getAll = () => Quote.find({});
+
+module.exports = { Quote, getAll };
