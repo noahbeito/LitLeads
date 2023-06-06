@@ -3,7 +3,8 @@ const path = require('path');
 
 const express = require('express');
 const morgan = require('morgan');
-const getQuotes = require('../database/controllers/quotes');
+const getQuotes = require('./controllers/quotes');
+const getBooks = require('./controllers/books');
 
 const app = express();
 app.use(morgan('dev'));
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/quotes', getQuotes);
+app.get('/books', getBooks);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
