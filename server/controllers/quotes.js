@@ -1,4 +1,4 @@
-const { getAll } = require('../models/quotes');
+const { getAll } = require('../../database/models/quotes');
 
 const getQuotes = (req, res) => {
   getAll()
