@@ -5,7 +5,7 @@ const URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 
 const getBooks = (req, res) => {
   const { query } = req;
-
+  console.log('QUERY***', query);
   const searchQuery = query.author.replace(/ /g, '+');
 
   axios.get(`${URL}${searchQuery}&key=${process.env.GOOGLE_API_KEY}`)

@@ -5,6 +5,7 @@ const express = require('express');
 const morgan = require('morgan');
 const getQuotes = require('./controllers/quotes');
 const getBooks = require('./controllers/books');
+const { getReadingList, saveToList } = require('./controllers/readingList');
 
 const app = express();
 app.use(morgan('dev'));
@@ -18,6 +19,8 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('/quotes', getQuotes);
 app.get('/books', getBooks);
+app.get('/reading-list', getReadingList);
+app.post('/reading-list', saveToList);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

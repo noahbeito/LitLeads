@@ -41,7 +41,7 @@ export default function Quote() {
   };
 
   return (
-    <>
+    <div className="quote-container">
       <span>{quotes[index].quote}</span>
       <span>{quotes[index].author}</span>
       <span>{quotes[index].philosophy}</span>
@@ -53,6 +53,6 @@ export default function Quote() {
           {books.map((book) => <Book book={book} key={book.id} />)}
         </div>
       )}
-    </>
+    </div>
   );
 }
