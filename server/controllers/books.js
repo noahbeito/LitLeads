@@ -11,18 +11,19 @@ const getBooks = (req, res) => {
   axios.get(`${URL}${searchQuery}&key=${process.env.GOOGLE_API_KEY}`)
     .then((response) => {
       let books = response.data.items;
-      books = books.map((book) => (
-        {
-          id: book.id,
-          title: book.volumeInfo.title || '',
-          authors: book.volumeInfo.authors || [],
-          subtitle: book.volumeInfo.subtitle || '',
-          publishedDate: book.volumeInfo.publishedDate || '',
-          description: book.volumeInfo.description || '',
-          images: book.volumeInfo.imageLinks || {},
-          previewLink: book.volumeInfo.previewLink || '',
-        }
-      ));
+      books = books.filter((book) => book.volumeInfo.language === 'en')
+        .map((book) => (
+          {
+            id: book.id,
+            title: book.volumeInfo.title || '',
+            authors: book.volumeInfo.authors || [],
+            subtitle: book.volumeInfo.subtitle || '',
+            publishedDate: book.volumeInfo.publishedDate || '',
+            description: book.volumeInfo.description || '',
+            images: book.volumeInfo.imageLinks || {},
+            previewLink: book.volumeInfo.previewLink || '',
+          }
+        ));
       res.status(200).send(books);
     })
     .catch((err) => {
