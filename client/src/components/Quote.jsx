@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Book from './Book';
+import Button from './Button';
 
 export default function Quote() {
   const [quotes, setQuotes] = useState([{}]);
@@ -45,8 +46,8 @@ export default function Quote() {
       <span>{quotes[index].quote}</span>
       <span>{quotes[index].author}</span>
       <span>{quotes[index].philosophy}</span>
-      <button type="button" onClick={() => nextClickHandler()}>Next</button>
-      <button type="button" onClick={() => booksClickHandler()}>Books</button>
+      <Button name="Next" clickHandler={nextClickHandler} />
+      <Button name="Books" clickHandler={booksClickHandler} />
       {showBooks
       && (
         <div className="book-list">
