@@ -22,7 +22,7 @@ export default function Quote() {
   useEffect(() => {
     axios.get('/books', {
       params: {
-        author: quotes[index].author,
+        author: quotes[index].source,
       },
     })
       .then((res) => {
@@ -36,6 +36,7 @@ export default function Quote() {
     setQuotes([...quotes]);
     setIndex(Math.floor(Math.random() * quotes.length));
     setShowBooks(false);
+    axios.get('/more-quotes');
   };
 
   const booksClickHandler = () => {
@@ -45,7 +46,7 @@ export default function Quote() {
   return (
     <div className="quote-container">
       <span>{quotes[index].quote}</span>
-      <span>{quotes[index].author}</span>
+      <span>{quotes[index].source}</span>
       <span>{quotes[index].philosophy}</span>
       <Button name="Next" clickHandler={nextClickHandler} />
       <Button name="Books" clickHandler={booksClickHandler} />

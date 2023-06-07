@@ -25,7 +25,7 @@ export default function Book({ book }) {
   };
   return (
     <div className="book-container">
-      <img src={book.images.thumbnail} alt={book.title} />
+      <img src={book.images.thumbnail} alt="book cover" />
       <span>{book.title}</span>
       <span>{book.authors.join(', ')}</span>
       {showInfo && <span>{book.description}</span>}
