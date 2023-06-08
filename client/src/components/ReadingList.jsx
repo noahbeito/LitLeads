@@ -13,12 +13,21 @@ export default function ReadingList() {
         console.log(err);
       });
   }, []);
+  const shelveClickHandler = (book) => {
+    axios.delete('/reading-list', { book })
+      .then(() => axios.get('/reading-list'))
+      .then((response) => setList(response.data))
+      .catch((err) => console.log(err));
+    // need to add book shelf and store removed book in bookshelf
+  };
   return (
-    <div>
-      <h1>My Reading List</h1>
-      {list.map((entry) => (
-        <Book book={entry} key={entry.id} />
-      ))}
-    </div>
+    <>
+      <h1 className="reading-list">My Reading List</h1>
+      <div className="reading-list-container">
+        {list.map((entry) => (
+          <Book book={entry} key={entry.id} button="shelve" clickHandler={shelveClickHandler} />
+        ))}
+      </div>
+    </>
   );
 }

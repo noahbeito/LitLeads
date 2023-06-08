@@ -1,4 +1,4 @@
-const { getList, addToList } = require('../../database/models/readingList');
+const { getList, addToList, remove } = require('../../database/models/readingList');
 
 const getReadingList = (req, res) => {
   getList()
@@ -21,4 +21,13 @@ const saveToList = (req, res) => {
     });
 };
 
-module.exports = { getReadingList, saveToList };
+const removeFromList = (req, res) => {
+  remove(req.body)
+    .then(() => res.sendStatus(204))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
+    });
+};
+
+module.exports = { getReadingList, saveToList, removeFromList };

@@ -5,7 +5,7 @@ const express = require('express');
 const morgan = require('morgan');
 const getQuotes = require('./controllers/quotes');
 const getBooks = require('./controllers/books');
-const { getReadingList, saveToList } = require('./controllers/readingList');
+const { getReadingList, saveToList, removeFromList } = require('./controllers/readingList');
 const getMoreQuotes = require('./controllers/moreQuotes');
 
 const app = express();
@@ -23,6 +23,7 @@ app.get('/more-quotes', getMoreQuotes);
 app.get('/books', getBooks);
 app.get('/reading-list', getReadingList);
 app.post('/reading-list', saveToList);
+app.delete('/reading-list', removeFromList);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

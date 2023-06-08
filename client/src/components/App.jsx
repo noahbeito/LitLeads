@@ -19,12 +19,12 @@ export default function App() {
   if (view === 'home') {
     return (
       <div id="App">
-        <Button name="reading-list" clickHandler={clickHandler} />
+        <Button name="Reading List" clickHandler={clickHandler} />
         <Quote />
       </div>
     );
   }
-  if (view === 'reading-list') {
+  if (view === 'Reading List') {
     return (
       <div id="App">
         <Button name="home" clickHandler={clickHandler} />

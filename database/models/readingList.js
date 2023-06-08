@@ -38,4 +38,8 @@ const addToList = (book) => {
   });
 };
 
-module.exports = { Book, getList, addToList };
+const remove = (book) => Book.deleteOne({ title: book.title });
+
+module.exports = {
+  Book, getList, addToList, remove,
+};

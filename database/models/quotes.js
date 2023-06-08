@@ -23,5 +23,3 @@ const saveQuote = (quote) => {
 };
 
 module.exports = { Quote, getAll, saveQuote };
-
-// db.quotes.findOneAndUpdate({ quote: 'If we did the things we are capable of, we would astound ourselves. ' }, { source: 'Thomas Edison', philosophy: 'n/a', _id: 'http://forismatic.com/en/88817e1244/' }, { new: true, upsert: true });

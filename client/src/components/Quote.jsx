@@ -44,18 +44,25 @@ export default function Quote() {
   };
 
   return (
-    <div className="quote-container">
-      <span>{quotes[index].quote}</span>
-      <span>{quotes[index].source}</span>
-      <span>{quotes[index].philosophy}</span>
-      <Button name="Next" clickHandler={nextClickHandler} />
-      <Button name="Books" clickHandler={booksClickHandler} />
-      {showBooks
-      && (
-        <div className="book-list">
-          {books.map((book) => <Book book={book} key={book.id} />)}
+    <>
+      <div className="quote-container">
+        <span className="quote">{`"${quotes[index].quote}"`}</span>
+        <span className="author">{quotes[index].source}</span>
+        <span className="philosophy">{quotes[index].philosophy}</span>
+        <div className="quote-buttons-container">
+          <Button name="Books" clickHandler={booksClickHandler} />
+          <Button name="Next" clickHandler={nextClickHandler} />
         </div>
-      )}
-    </div>
+      </div>
+      <div className="book-list-container">
+        {showBooks
+        && (
+          <div className="book-list">
+            {books.map((book) => <Book book={book} key={book.id} />)}
+          </div>
+        )}
+      </div>
+    </>
+
   );
 }
