@@ -13,9 +13,9 @@ export default function ReadingList() {
         console.log(err);
       });
   }, []);
-  const shelveClickHandler = (book) => {
-    axios.put('/bookshelf', { book })
-      .then(() => axios.delete('/reading-list', { book }))
+  const shelveClickHandler = (title) => {
+    axios.put('/bookshelf', { title })
+      .then(() => axios.put('/reading-list', { title }))
       .then(() => axios.get('/reading-list'))
       .then((response) => setList(response.data))
       .catch((err) => console.log(err));

@@ -3,7 +3,6 @@ const { getList, addToList, remove } = require('../../database/models/book');
 const getReadingList = (req, res) => {
   getList()
     .then((list) => {
-      console.log('LIST****', list);
       res.status(200).send(list);
     })
     .catch((err) => {

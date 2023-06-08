@@ -40,11 +40,11 @@ const addToList = (book) => {
   });
 };
 
-const putOnShelf = (book) => Book.findOneAndUpdate({ title: book.title }, { bookshelf: true });
+const putOnShelf = (title) => Book.findOneAndUpdate({ title: title.title }, { bookshelf: true });
 
 const getShelf = () => Book.find({ bookshelf: true });
 
-const remove = (book) => Book.deleteOne({ title: book.title });
+const remove = (title) => Book.findOneAndUpdate({ title: title.title }, { readingList: false });
 
 module.exports = {
   Book, getList, addToList, remove, putOnShelf, getShelf,

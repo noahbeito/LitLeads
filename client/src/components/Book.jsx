@@ -30,7 +30,11 @@ export default function Book({ book, button, clickHandler }) {
       <span>{book.authors.join(', ')}</span>
       <div className="book-button-container">
         <Button name={infoButton} clickHandler={moreInfoClickHandler} />
-        <Button name={button || saveButton} clickHandler={clickHandler || saveClickHandler} />
+        <Button
+          name={button || saveButton}
+          clickHandler={clickHandler || saveClickHandler}
+          args={[book.title]}
+        />
       </div>
       {showInfo && <span>{book.description}</span>}
     </div>

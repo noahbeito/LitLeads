@@ -24,7 +24,7 @@ app.get('/more-quotes', getMoreQuotes);
 app.get('/books', getBooks);
 app.get('/reading-list', getReadingList);
 app.post('/reading-list', saveToList);
-app.delete('/reading-list', removeFromList);
+app.put('/reading-list', removeFromList);
 app.get('/bookshelf', getBookshelf);
 app.put('/bookshelf', putShelf);
 
