@@ -14,11 +14,11 @@ export default function ReadingList() {
       });
   }, []);
   const shelveClickHandler = (book) => {
-    axios.delete('/reading-list', { book })
+    axios.put('/bookshelf', { book })
+      .then(() => axios.delete('/reading-list', { book }))
       .then(() => axios.get('/reading-list'))
       .then((response) => setList(response.data))
       .catch((err) => console.log(err));
-    // need to add book shelf and store removed book in bookshelf
   };
   return (
     <>

@@ -1,4 +1,4 @@
-const { getList, addToList, remove } = require('../../database/models/readingList');
+const { getList, addToList, remove } = require('../../database/models/book');
 
 const getReadingList = (req, res) => {
   getList()
