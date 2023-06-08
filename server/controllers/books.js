@@ -8,7 +8,7 @@ const getBooks = (req, res) => {
   let searchQuery;
   console.log('QUERY***', query);
   if (query.author === 'unknown') {
-    searchQuery = query.title.replace(/ /g, '+');
+    searchQuery = query.quote.replace(/ /g, '+');
   }
   if (query.author !== 'unknown') {
     searchQuery = query.author.replace(/ /g, '+');
