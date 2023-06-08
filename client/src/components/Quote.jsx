@@ -49,7 +49,7 @@ export default function Quote() {
       <div className="quote-container">
         <span className="quote">{`"${quotes[index].quote}"`}</span>
         <span className="author">{quotes[index].source}</span>
-        <span className="philosophy">{quotes[index].philosophy}</span>
+        {/* <span className="philosophy">{quotes[index].philosophy}</span> */}
         <div className="quote-buttons-container">
           <Button name="Books" clickHandler={booksClickHandler} />
           <Button name="Next" clickHandler={nextClickHandler} />

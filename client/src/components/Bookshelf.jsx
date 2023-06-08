@@ -6,7 +6,7 @@ export default function Bookshelf() {
   const [bookshelf, setBookshelf] = useState([]);
   useEffect(() => {
     axios.get('/bookshelf')
-      .then((response) => setBookshelf([...response.data]))
+      .then((response) => setBookshelf([...response.data].reverse()))
       .catch((err) => console.log(err));
   }, []);
   const thoughtsClickHandler = () => {
