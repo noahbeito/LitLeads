@@ -11,4 +11,15 @@ const Quote = mongoose.model('Quote', quoteSchema);
 
 const getAll = () => Quote.find({});
 
-module.exports = { Quote, getAll };
+const saveQuote = (quote) => {
+  const filter = { quote: quote.quote };
+  const update = {
+    quote: quote.quote,
+    source: quote.author || 'unknown',
+    philosophy: quote.philosophy,
+    _id: quote.quoteLink,
+  };
+  return Quote.findOneAndUpdate(filter, update, { new: true, upsert: true });
+};
+
+module.exports = { Quote, getAll, saveQuote };

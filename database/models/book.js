@@ -13,6 +13,7 @@ const bookSchema = new mongoose.Schema({
   description: String,
   previewLink: String,
   readingList: Boolean,
+  bookshelf: Boolean,
 });
 
 const Book = mongoose.model('Book', bookSchema);
@@ -31,6 +32,7 @@ const addToList = (book) => {
     description: book.description,
     images: book.images,
     readingList: true,
+    bookshelf: false,
   };
   return Book.findOneAndUpdate(filter, update, {
     new: true,
@@ -38,4 +40,12 @@ const addToList = (book) => {
   });
 };
 
-module.exports = { Book, getList, addToList };
+const putOnShelf = (title) => Book.findOneAndUpdate({ title: title.title }, { bookshelf: true });
+
+const getShelf = () => Book.find({ bookshelf: true });
+
+const remove = (title) => Book.findOneAndUpdate({ title: title.title }, { readingList: false });
+
+module.exports = {
+  Book, getList, addToList, remove, putOnShelf, getShelf,
+};

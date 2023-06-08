@@ -3,34 +3,44 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Button from './Button';
 
-export default function Book({ book }) {
-  const [saveButton, setSaveButton] = useState('save');
+export default function Book({ book, button, clickHandler }) {
+  const [saveButton, setSaveButton] = useState('Save');
   const [showInfo, setShowInfo] = useState(false);
-  const [infoButton, setInfoButton] = useState('more-info');
+  const [infoButton, setInfoButton] = useState('More');
 
-  const clickHandler = () => {
+  const saveClickHandler = () => {
     axios.post('/reading-list', { ...book })
       .then(() => {
-        setSaveButton('saved');
+        setSaveButton('Saved');
       })
       .catch((err) => console.log(err));
   };
   const moreInfoClickHandler = (currentButton) => {
     setShowInfo(!showInfo);
-    if (currentButton === 'more-info') {
-      setInfoButton('less-info');
+    if (currentButton === 'More') {
+      setInfoButton('Less');
     } else {
-      setInfoButton('more-info');
+      setInfoButton('More');
     }
   };
   return (
     <div className="book-container">
-      <img src={book.images.thumbnail} alt={book.title} />
+      <img src={book.images.thumbnail} alt="book cover" />
       <span>{book.title}</span>
-      <span>{book.authors.join(', ')}</span>
+      <span>
+        -
+        {book.authors.join(', ')}
+        -
+      </span>
+      <div className="book-button-container">
+        <Button name={infoButton} clickHandler={moreInfoClickHandler} />
+        <Button
+          name={button || saveButton}
+          clickHandler={clickHandler || saveClickHandler}
+          args={[book.title]}
+        />
+      </div>
       {showInfo && <span>{book.description}</span>}
-      <Button name={infoButton} clickHandler={moreInfoClickHandler} />
-      <Button name={saveButton} clickHandler={clickHandler} />
     </div>
   );
 }
@@ -45,8 +55,12 @@ Book.propTypes = {
     }),
     description: PropTypes.string,
   }),
+  button: PropTypes.string,
+  clickHandler: PropTypes.func,
 };
 
 Book.defaultProps = {
   book: {},
+  button: undefined,
+  clickHandler: undefined,
 };
