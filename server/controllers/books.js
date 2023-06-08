@@ -5,9 +5,14 @@ const URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 
 const getBooks = (req, res) => {
   const { query } = req;
+  let searchQuery;
   console.log('QUERY***', query);
-  const searchQuery = query.author.replace(/ /g, '+');
-
+  if (query.author === 'unknown') {
+    searchQuery = query.title.replace(/ /g, '+');
+  }
+  if (query.author !== 'unknown') {
+    searchQuery = query.author.replace(/ /g, '+');
+  }
   axios.get(`${URL}${searchQuery}&key=${process.env.GOOGLE_API_KEY}`)
     .then((response) => {
       let books = response.data.items;

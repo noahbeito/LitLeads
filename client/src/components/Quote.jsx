@@ -23,6 +23,7 @@ export default function Quote() {
     axios.get('/books', {
       params: {
         author: quotes[index].source,
+        title: quotes[index].title,
       },
     })
       .then((res) => {
