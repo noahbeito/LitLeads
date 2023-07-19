@@ -46,7 +46,7 @@ export default function App() {
         <Button name="Home" clickHandler={clickHandler} />
         <Button name="Reading List" clickHandler={clickHandler} />
         <Button name="Bookshelf" clickHandler={clickHandler} />
-        <Search name="Search" clickHandler={clickHandler} />
+        <Button name="Search" clickHandler={clickHandler} />
         <Bookshelf />
       </div>
     );
@@ -57,7 +57,7 @@ export default function App() {
         <Button name="Home" clickHandler={clickHandler} />
         <Button name="Reading List" clickHandler={clickHandler} />
         <Button name="Bookshelf" clickHandler={clickHandler} />
-        <Search name="Search" clickHandler={clickHandler} />
+        <Button name="Search" clickHandler={clickHandler} />
         <Search />
       </div>
     );
