@@ -4,6 +4,7 @@ import Quote from './Quote';
 import Button from './Button';
 import ReadingList from './ReadingList';
 import Bookshelf from './Bookshelf';
+import Search from './Search';
 
 export default function App() {
   const [view, setView] = useState('Home');
@@ -23,6 +24,7 @@ export default function App() {
         <Button name="Home" clickHandler={clickHandler} />
         <Button name="Reading List" clickHandler={clickHandler} />
         <Button name="Bookshelf" clickHandler={clickHandler} />
+        <Button name="Search" clickHandler={clickHandler} />
         <Quote />
       </div>
     );
@@ -33,6 +35,7 @@ export default function App() {
         <Button name="Home" clickHandler={clickHandler} />
         <Button name="Reading List" clickHandler={clickHandler} />
         <Button name="Bookshelf" clickHandler={clickHandler} />
+        <Button name="Search" clickHandler={clickHandler} />
         <ReadingList />
       </div>
     );
@@ -43,7 +46,19 @@ export default function App() {
         <Button name="Home" clickHandler={clickHandler} />
         <Button name="Reading List" clickHandler={clickHandler} />
         <Button name="Bookshelf" clickHandler={clickHandler} />
+        <Search name="Search" clickHandler={clickHandler} />
         <Bookshelf />
+      </div>
+    );
+  }
+  if (view === 'Search') {
+    return (
+      <div id="App">
+        <Button name="Home" clickHandler={clickHandler} />
+        <Button name="Reading List" clickHandler={clickHandler} />
+        <Button name="Bookshelf" clickHandler={clickHandler} />
+        <Search name="Search" clickHandler={clickHandler} />
+        <Search />
       </div>
     );
   }
