@@ -6,7 +6,7 @@ const URL = 'https://www.googleapis.com/books/v1/volumes?q=';
 const getBooks = (req, res) => {
   const { query } = req;
   let searchQuery;
-  if (query.author && query.author === 'unknown') {
+  if (query.author && query.quote && query.author === 'unknown') {
     searchQuery = query.quote.replace(/ /g, '+');
   }
   if (query.author && query.author !== 'unknown') {
