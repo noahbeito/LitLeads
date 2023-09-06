@@ -12,6 +12,10 @@ npm install
 npm run build
 npm run start
 ```
+## APIs
+- [Google Books](https://developers.google.com/books)
+- [Forismatic](https://forismatic.com/en/api/)
+- [Philosophy Quotes API](https://github.com/KaranDahiya/philosophy-quotes-API)
 
 ### Explore quotes from some of the greatest thinkers throughout history
 ![image](https://github.com/noahbeito/mvp/assets/90667844/cfb13094-4d19-4563-a2aa-4a15fb231121)
